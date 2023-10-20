@@ -19,6 +19,7 @@
     "fastify": "^4.24.3",
     "fastify-cors": "^6.1.0",
     "morgan": "^1.10.0",
+    "mysql2": "^3.6.2",
     "sequelize": "^6.33.0"
   },
   "devDependencies": {

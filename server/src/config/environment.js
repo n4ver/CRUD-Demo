@@ -16,14 +16,12 @@ const environment = {
     DB: {
         DB_NAME: process.env.DB_NAME || 'complaintbase',
         DB_USER: process.env.DB_USER || 'complaintbase', 
-        DB_PASSWORD: process.env.DB_PASS || 'complaintbase',
+        DB_PASSWORD: process.env.DB_PASS || 'c0mplaintBa$e',
         OPTIONS: {
-            DIALECT: process.env.DIALECT || 'mysql', // change to mysql maybe maybe
-            HOST: process.env.HOST || 'localhost',
-            STORAGE: path.resolve(__dirname, '../../complaintbase.sqlite'),
-            DB_PORT: process.env.DB_PORT || 8082,
+            dialect: process.env.DB_DIALECT || 'mysql', // change to mysql maybe maybe
+            host: process.env.DB_HOST || 'localhost'
         },
-        AUTENTICATION: {
+        AUTHENTICATION: {
             jwtSecret: process.env.JWT_SECRET || 'secret'
         }
     }
