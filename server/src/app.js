@@ -1,5 +1,4 @@
 const fastify = require('fastify');
-const { sequelize } = require('./models');
 const urls = ['localhost'];
 
 const build = () => {
@@ -7,7 +6,13 @@ const build = () => {
 
     //require('./routes')(app);
 
-    sequelize.sync({ force: false });
+    app.register(require('./plugins/'));
+    app.register(require('./routes/api'), { prefix: 'api' });
+
+    //hooks
+    fastify.addHook('onClose', (instance, done) => {
+        const { sequelize } = instance;
+    })
 
     return app;
 }
