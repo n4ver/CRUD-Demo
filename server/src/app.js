@@ -9,8 +9,13 @@ const build = () => {
     app.register(require('./plugins/'));
     app.register(require('./routes/api'), { prefix: 'api' });
 
+    app.register(require('fastify-cors'), {
+        origin: '*',
+        credentials: true
+     })
+
     //hooks
-    fastify.addHook('onClose', (instance, done) => {
+    app.addHook('onClose', (instance, done) => {
         const { sequelize } = instance;
     })
 
