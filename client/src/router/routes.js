@@ -10,8 +10,5 @@ export default [
     path: '/register',
     meta: { requireAuth: false },
     component: () => import('../views/Register.vue')
-  },
-  {
-    name: ''
   }
 ]
