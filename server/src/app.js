@@ -1,18 +1,18 @@
 const fastify = require('fastify');
-const urls = ['localhost'];
+const cors = require('@fastify/cors');
 
 const build = () => {
     const app = fastify({ logger: true });
 
     //require('./routes')(app);
 
-    app.register(require('./plugins/'));
-    app.register(require('./routes/api'), { prefix: 'api' });
+    app.register(require('./plugins/sequelizeConnector'));
+    app.register(require('./routes/api'), { prefix: '/api/v1' });
 
-    app.register(require('fastify-cors'), {
+    app.register(cors, {
         origin: '*',
         credentials: true
-     })
+    });
 
     //hooks
     app.addHook('onClose', (instance, done) => {
