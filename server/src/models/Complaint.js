@@ -9,8 +9,11 @@ module.exports = (sequelize, DataTypes) => {
         title: DataTypes.STRING,
         category: DataTypes.ENUM('Safety', 'Personnel', 'Facility', 'Conduct'),
         status: DataTypes.ENUM("Solved", "Pending", "Closed"),
-        text: DataTypes.STRING(500),
-        lastEdited: DataTypes.DATE
+        text: DataTypes.STRING(1000),
+        lastEdited: {
+            type: DataTypes.DATETIME,
+            defaultValue: DataTypes.NOW
+        }
         //comments:
     })
 }

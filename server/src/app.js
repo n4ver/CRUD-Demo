@@ -17,6 +17,7 @@ const build = () => {
     //hooks
     app.addHook('onClose', (instance, done) => {
         const { sequelize } = instance;
+        sequelize.destroy(() => instance.log.info('Sequelize Instance Destroyed.'));
     })
 
     return app;
