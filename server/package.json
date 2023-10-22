@@ -24,7 +24,8 @@
     "fastify-swagger": "^5.2.0",
     "morgan": "^1.10.0",
     "mysql2": "^3.6.2",
-    "sequelize": "^6.33.0"
+    "sequelize": "^6.33.0",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "eslint": "^8.51.0",

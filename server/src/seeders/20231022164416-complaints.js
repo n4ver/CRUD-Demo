@@ -1,4 +1,5 @@
 'use strict';
+const { v4: uuidv4 } = require('uuid')
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -13,11 +14,11 @@ module.exports = {
      * }], {});
     */
     const authors = await queryInterface.sequelize.query(
-      `SELECT id from Users;`
+      `select * from Users WHERE username = "SBN_OC";`
     )
 
     return queryInterface.bulkInsert('Complaints', [{
-      id: 0,
+      id: uuidv4(),
       author: authors[0].id,
       title: 'Recruits damn lacking',
       category: ['Personnel'],

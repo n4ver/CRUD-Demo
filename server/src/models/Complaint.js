@@ -1,12 +1,11 @@
 module.exports = (sequelize, DataTypes) => {
     const Complaint = sequelize.define('Complaint', {
         id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
+            type: DataTypes.UUID,
             primaryKey: true
         },
         author: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
             references: {
                 model: 'Users',
                 key: 'id'

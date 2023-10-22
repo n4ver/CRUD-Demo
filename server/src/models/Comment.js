@@ -1,12 +1,11 @@
 module.exports = (sequelize, DataTypes) => {
     const Comment = sequelize.define('Comment', {
         id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
+            type: DataTypes.UUID,
             primaryKey: true
         },
         parent_id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
             references: {
                 model: 'Complaints',
                 key: 'id'
@@ -14,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: true
         },
         author: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
             references: {
                 model: 'Users',
                 key: 'id'
