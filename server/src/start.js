@@ -8,7 +8,6 @@ build()
                 app.log.error(err);
                 process.exit(1);
             }
-            console.log('hi');
             app.log.info(`server listening on ${address}`);
 
             process.on('SIGINT', () => app.close());

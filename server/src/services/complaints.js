@@ -1,5 +1,3 @@
-const { ObjectID } = require('sequelize');
-
 class complaintService {
     /**
      * Creats an instance of complaintService

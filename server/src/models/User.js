@@ -21,14 +21,15 @@ module.exports = (sequelize, DataTypes) => {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
-            primaryKey: true
+            primaryKey: true,
+            allowNull: false
         },
         username: {
             type: DataTypes.STRING,
             unique: true
         },
         password: DataTypes.STRING,
-        isAdmin: DataTypes.BOOLEAN
+        is_admin: DataTypes.BOOLEAN
     }, {
         hooks: {
             beforeCreate: hashPassword,
@@ -40,9 +41,9 @@ module.exports = (sequelize, DataTypes) => {
     User.prototype.comparePassword = function (password) {
         return bcrypt.compareAsync(password, this.password)
     }
-
     User.associate = function (models) {
-    }
-
-    return User
+        User.hasMany(models.Complaint, {foreignKey: 'author'});
+        User.hasMany(models.Comment, {foreignKey: 'author'});
+    };
+    return User;
 }
