@@ -1,3 +1,5 @@
+const db = require('../../../models');
+const Complaint = db.Complaint
 /*
 const complaintService = require('../../../services/products');
 const {
@@ -19,6 +21,10 @@ async function routes(fastify, options) {
         return {_id: insertedId};
     })
     */
+   fastify.get('/', async (req, res) => {
+    const complaints = await Complaint.findAll();
+    return res.send({ complaints })
+   }),
     //get one
     fastify.get('/:id', async (req, res) => {
         res.send({

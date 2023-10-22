@@ -13,7 +13,9 @@ const build = () => {
         origin: '*',
         credentials: true
     });
-    db.sequelize.sync({ force: true }); // remove force later
+
+    db.sequelize.sync();
+    // db.sequelize.sync({ force: true }); // remove force later
 
     //hooks
     app.addHook('onClose', (instance, done) => {
