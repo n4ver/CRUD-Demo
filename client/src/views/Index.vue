@@ -5,29 +5,24 @@
 </script>
 
 <script>
-import Navbar from '../components/Navbar.vue'
-import Footer from '../components/Footer.vue'
-
 export default {
   name: "App",
   components: {
-    Navbar,
-    Footer
   },
   computed: {
-    username() {
+    /* username() {
       // We will see what `params` is shortly
       return this.$route.params.username
-    },
+    }, */
   },
   methods: {
-    goToDashboard() {
+    /* goToDashboard() {
       if (isAuthenticated) {
         this.$router.push('/complaints')
       } else {
         this.$router.push('/login')
       }
-    },
+    }, */
   },
 };
 </script>

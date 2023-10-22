@@ -6,7 +6,6 @@
                         <div id="nav-bar-inner" class="flex-auto gap-6 text-white">
                             <a href="/" title="Home" class="text-xl px-4 tracking-wider">Home</a>
                             <a href="/about" title="About" class="text-xl px-4 tracking-wider">About</a>
-                            <a href="/stats" title="Tournament Statistics" class="text-xl px-4 tracking-wider">Stats</a>
                         </div>
                         <div id="login-bar" class="flex pr-4">
                             <a href="/login" title="Log in" class="text-xl text-indigo-900 tracking-wider">Login</a>
