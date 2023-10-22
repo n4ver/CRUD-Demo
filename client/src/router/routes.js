@@ -1,5 +1,11 @@
 export default [
   {
+    name: 'Index',
+    path: '/',
+    meta: { requireAuth: false },
+    component: () => import('../views/Index.vue')
+  },
+  {
     name: 'Login',
     path: '/login',
     meta: { requireAuth: false },
