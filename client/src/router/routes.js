@@ -18,6 +18,12 @@ export default [
     component: () => import('../views/Complaints.vue')
   },
   {
+    name: 'ComplaintsSlug',
+    path: '/complaints/:id',
+    meta: { requireAuth: false },
+    component: () => import('../views/ComplaintsSlug.vue')
+  },
+  {
     name: 'Register',
     path: '/register',
     meta: { requireAuth: false },

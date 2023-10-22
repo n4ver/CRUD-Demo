@@ -1,16 +1,18 @@
 <script setup>
 import axios from 'axios';
 import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
 
-var complaints = ref(null);
+var complaint = ref(null);
+const route = useRoute();
 
 onMounted(() => {
     axios
-        .get('http://localhost:8081/api/v1/complaints')
+        .get(`http://localhost:8081/api/v1/complaints/${route.params.id}`)
         .then((res => {
             console.log('res.data:', res.data);
-            complaints.value = res.data.complaints;
-            console.log('complaints:', complaints);
+            complaint.value = res.data.complaint;
+            console.log('complaint:', complaint);
         }));
 })
 </script>
@@ -29,13 +31,7 @@ onMounted(() => {
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="complaint in complaints" :key="complaint.id">
-                    <td>{{ complaint.title }}</td>
-                    <td>{{ complaint.category }}</td>
-                    <td>{{ complaint.status }}</td>
-                    <td>
-                        <a v-bind:href="'/complaints/' + complaint.id">Click Here to View</a>
-                    </td>
+                <tr>
                 </tr>
             </tbody>
         </table>
