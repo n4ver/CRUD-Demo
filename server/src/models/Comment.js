@@ -22,18 +22,6 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: true
         },
         text: DataTypes.STRING(1000),
-        created_at: {
-            type: DataTypes.DATE,
-            defaultValue: DataTypes.NOW
-        },
-        updated_at: {
-            type: DataTypes.DATE,
-            defaultValue: DataTypes.NOW
-        }
     })
-    Comment.associate = function (models) {
-        Comment.belongsTo(models.Complaint, {foreignKey: parent_id});
-        Comment.belongsTo(models.User, {foreignKey: author});
-    };
     return Comment;
 }

@@ -1,32 +1,43 @@
+'use strict';
+
+const fs = require('fs');
+const path = require('path');
 const Sequelize = require('sequelize');
-const { DB } = require('../config/environment');
+const process = require('process');
+const basename = path.basename(__filename);
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
 
-const sequelize = new Sequelize(
-    DB.DB_NAME,
-    DB.DB_USER,
-    DB.DB_PASSWORD,
-    DB.OPTIONS
-);
+let sequelize;
+if (config.use_env_variable) {
+  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+} else {
+  sequelize = new Sequelize(config.database, config.username, config.password, config);
+}
 
-const Comment = require('./Comment')(sequelize, Sequelize.DataTypes);
-const Complaint = require('./Complaint')(sequelize, Sequelize.DataTypes);
-const User = require('./User')(sequelize, Sequelize.DataTypes);
+fs
+  .readdirSync(__dirname)
+  .filter(file => {
+    return (
+      file.indexOf('.') !== 0 &&
+      file !== basename &&
+      file.slice(-3) === '.js' &&
+      file.indexOf('.test.js') === -1
+    );
+  })
+  .forEach(file => {
+    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
+    db[model.name] = model;
+  });
 
-//Complaint.hasMany(Comment); // A complaint has many comments
-//Comment.belongsTo(Complaint); // A comment belongs to a complaint
-
-//User.HasMany(Complaint); // A User has many complaints
-//Complaint.belongsTo(User); // A complaint has one user
-
-//User.HasMany(Comment); // A user makes many comments
-//Comment.belongsTo(User); // A Comment belongs to a user
+Object.keys(db).forEach(modelName => {
+  if (db[modelName].associate) {
+    db[modelName].associate(db);
+  }
+});
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-db[Comment.name] = Comment;
-db[Complaint.name] = Complaint;
-db[User.name] = User;
-
 
 module.exports = db;

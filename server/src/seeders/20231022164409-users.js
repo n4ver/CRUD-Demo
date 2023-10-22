@@ -12,14 +12,14 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-   return queryInterface.bulkInsert('Users', [{
-    id: 1,
-    username: 'SBN_OC',
-    password: '$2y$08$rpKRsf/f0v/tPYsuPVS1SucwXIXUKnfAOb7F.1mnTrW6h27872Xua',
-    is_admin: true,
-    createdAt: new Date(),
-    updatedAt: new Date()
-   }]);
+    return queryInterface.bulkInsert('Users', [{
+      id: 0,
+      username: 'SBN_OC',
+      password: '$2y$08$rpKRsf/f0v/tPYsuPVS1SucwXIXUKnfAOb7F.1mnTrW6h27872Xua',
+      is_admin: true,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }]);
   },
 
   async down (queryInterface, Sequelize) {
