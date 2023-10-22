@@ -16,5 +16,10 @@ export default [
     path: '/register',
     meta: { requireAuth: false },
     component: () => import('../views/Register.vue')
+  },
+  {
+    name: 'Error',
+    path: '/:catchAll(.*)',
+    component: () => import('../views/PageNotFound.vue'),
   }
 ]
