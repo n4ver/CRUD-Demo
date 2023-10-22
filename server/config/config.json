@@ -1,0 +1,24 @@
+{
+  "development": {
+    "username": "complaintbase",
+    "password": "c0mplaintBa$e",
+    "database": "complaintbase",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "port": "3306"
+  },
+  "test": {
+    "username": "complaintbase",
+    "password": "c0mplaintBa$e",
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "complaintbase",
+    "password": "c0mplaintBa$e",
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
