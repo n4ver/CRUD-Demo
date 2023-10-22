@@ -31,7 +31,7 @@ export default {
     <div>
     <main class="mb-auto">
         <div class="p-4 mx-auto max-w-screen-md text-center">
-            <p class="my-6">
+            <p class="my-6 text-gray-900 md:text-2xl dark:text-white" >
                 THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG
             </p>
         </div>
