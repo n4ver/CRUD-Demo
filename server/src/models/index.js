@@ -40,4 +40,22 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+// Associations
+//Complaint.hasMany(Comment); // A complaint has many comments
+//Comment.belongsTo(Complaint); // A comment belongs to a complaint
+
+//User.HasMany(Complaint); // A User has many complaints
+//Complaint.belongsTo(User); // A complaint has one user
+
+//User.HasMany(Comment); // A user makes many comments
+//Comment.belongsTo(User); // A Comment belongs to a user
+db.Complaint.hasMany(db.Comment);
+db.Comment.belongsTo(db.Complaint);
+
+db.User.hasMany(db.Complaint);
+db.Complaint.belongsTo(db.User);
+
+db.User.hasMany(db.Comment);
+db.Comment.belongsTo(db.User);
+
 module.exports = db;
