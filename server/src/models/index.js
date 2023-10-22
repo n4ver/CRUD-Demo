@@ -1,5 +1,3 @@
-const fs = require('fs');
-const path = require('path');
 const Sequelize = require('sequelize');
 const { DB } = require('../config/environment');
 const db = {};
@@ -9,25 +7,17 @@ const sequelize = new Sequelize(
     DB.DB_USER,
     DB.DB_PASSWORD,
     DB.OPTIONS
-)
+);
 
-fs
-    .readdirSync(__dirname)
-    .filter((file) => 
-        file !== 'index.js'
-    )
-    .forEach((file) => {
-        const model = sequelize.define(path.join(__dirname, file));
-        db[model.name] = model;
-    })
-
-Object.keys(db).forEach(function (modelName) {
-    if ('associate' in db[modelName]) {
-        db[modelName].associate(db)
-    }
-})
+const Comment = require('./Comment')(sequelize, Sequelize.DataTypes);
+const Complaint = require('./Complaint')(sequelize, Sequelize.DataTypes);
+const User = require('./User')(sequelize, Sequelize.DataTypes);
 
 db.sequelize = sequelize;
-db.Sequelize = sequelize;
+db.Sequelize = Sequelize;
+db[Comment.name] = Comment;
+db[Complaint.name] = Complaint;
+db[User.name] = User;
+
 
 module.exports = db;

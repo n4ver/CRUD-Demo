@@ -5,15 +5,24 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true,
             primaryKey: true
         },
-        author: DataTypes.INTEGER,
+        author: {
+            type: DataTypes.INTEGER,
+            foreignKey: true
+        },
         title: DataTypes.STRING,
         category: DataTypes.ENUM('Safety', 'Personnel', 'Facility', 'Conduct'),
         status: DataTypes.ENUM("Solved", "Pending", "Closed"),
         text: DataTypes.STRING(1000),
-        lastEdited: {
-            type: DataTypes.DATETIME,
+        created_at: {
+            type: DataTypes.DATE,
+            defaultValue: DataTypes.NOW
+        },
+        updated_at: {
+            type: DataTypes.DATE,
             defaultValue: DataTypes.NOW
         }
         //comments:
     })
+    //Complaint.hasMany()
+    return Complaint;
 }
