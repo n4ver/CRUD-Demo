@@ -11,26 +11,22 @@ const {
 } = require('./schemas');
 */
 async function routes(fastify, options) {
-    /*
     //create
-    fastify.post('/', {schema: createSchema }, async (req, res) => {
+    fastify.post('/', async (req, res) => {
         const { body } = req;
-
-        const insertedId = await complaintService.create({ complaint: body});
-        app.log.info('insertedID', insertedId);
-        return {_id: insertedId};
-    })
-    */
+        const complaint = Complaint.create({ body });
+        console.log('Complaint Submitted. ID:', complaint.id);
+    }),
+   //get all
    fastify.get('/', async (req, res) => {
     const complaints = await Complaint.findAll();
     return res.send({ complaints })
    }),
     //get one
     fastify.get('/:id', async (req, res) => {
-        res.send({
-            id: req.params.id,
-            author: "John"
-        })
+        const { id } = req.params;
+        const complaint = await Complaint.findByPk(id);
+        return res.send({ complaint });
     })
 }
 

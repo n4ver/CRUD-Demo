@@ -16,10 +16,10 @@ module.exports = {
     const authors = await queryInterface.sequelize.query(
       `select * from Users WHERE username = "SBN_OC";`
     )
-
+    console.log(authors[0][0].id);
     return queryInterface.bulkInsert('Complaints', [{
       id: uuidv4(),
-      author: authors[0].id,
+      UserId: authors[0][0].id,
       title: 'Recruits damn lacking',
       category: ['Personnel'],
       status: ['Pending'],
