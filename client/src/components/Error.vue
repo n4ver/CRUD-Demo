@@ -1,11 +1,10 @@
 <script>
+
 export default {
     name: 'Error',
-    data() {
-        return {
-            errorCode: "",
-            errorMessage: ""
-        }
+    props: ['errorCode', 'errorMessage'],
+    setup(props) {
+        console.log(props)
     }
 }
 </script>

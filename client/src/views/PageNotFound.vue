@@ -1,21 +1,22 @@
 <script>
 import Error from "../components/Error.vue"
+import { ref } from 'vue'
 
 export default {
     components: {
         Error
     },
-    data() {
-        return {
-            errorCode: "404",
-            errorMessage: "We couldn't find the page you're looking for."
-        }
+    setup() {
+        const errorCode = ref('404')
+        const errorMessage = ref(`We couldn't find the page you're looking for.`)
+
+        return {errorCode, errorMessage}
     }
 }
 </script>
 
 <template>
-    <Error />
+    <Error :errorCode="errorCode" :errorMessage="errorMessage"/>
 </template>
 
 <style scoped>
