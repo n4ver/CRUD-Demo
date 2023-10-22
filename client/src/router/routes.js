@@ -12,6 +12,12 @@ export default [
     component: () => import('../views/Login.vue')
   },
   {
+    name: 'Complaints',
+    path: '/complaints',
+    meta: { requireAuth: false },
+    component: () => import('../views/Complaints.vue')
+  },
+  {
     name: 'Register',
     path: '/register',
     meta: { requireAuth: false },

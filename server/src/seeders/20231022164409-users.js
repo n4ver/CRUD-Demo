@@ -16,7 +16,7 @@ module.exports = {
     return queryInterface.bulkInsert('Users', [{
       id: uuidv4(),
       username: 'SBN_OC',
-      password: '$2y$08$rpKRsf/f0v/tPYsuPVS1SucwXIXUKnfAOb7F.1mnTrW6h27872Xua', // base north
+      password: '$2y$08$rpKRsf/f0v/tPYsuPVS1SucwXIXUKnfAOb7F.1mnTrW6h27872Xua', // basenorth
       is_admin: true,
       createdAt: new Date(),
       updatedAt: new Date()

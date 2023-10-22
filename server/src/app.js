@@ -10,12 +10,11 @@ const build = () => {
     app.register(require('./routes/api'), { prefix: '/api/v1' });
 
     app.register(cors, {
-        origin: '*',
-        credentials: true
+        origin: true
     });
 
-    // db.sequelize.sync();
-    db.sequelize.sync({ force: true }); // remove force later
+    db.sequelize.sync();
+    // db.sequelize.sync({ force: true }); // remove force later
 
     //hooks
     app.addHook('onClose', (instance, done) => {

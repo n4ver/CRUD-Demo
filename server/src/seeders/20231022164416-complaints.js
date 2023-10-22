@@ -16,7 +16,7 @@ module.exports = {
     const authors = await queryInterface.sequelize.query(
       `select * from Users WHERE username = "SBN_OC";`
     )
-    console.log(authors[0][0].id);
+    console.log(authors[0][0].id); // authors[0] is a array of results, authors[0][0] acesses first element of the array.
     return queryInterface.bulkInsert('Complaints', [{
       id: uuidv4(),
       UserId: authors[0][0].id,
