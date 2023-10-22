@@ -7,6 +7,10 @@ module.exports = (sequelize, DataTypes) => {
         },
         author: {
             type: DataTypes.INTEGER,
+            references: {
+                model: 'Users',
+                key: 'id'
+            },
             foreignKey: true
         },
         title: DataTypes.STRING,
@@ -23,6 +27,9 @@ module.exports = (sequelize, DataTypes) => {
         }
         //comments:
     })
-    //Complaint.hasMany()
+    Complaint.associate = function (models) {
+        Complaint.belongsTo(models.User, { foreignKey: author });
+        Complaint.hasMany(models.Comment, { foreignKey: parent_id });
+    };
     return Complaint;
 }

@@ -7,10 +7,18 @@ module.exports = (sequelize, DataTypes) => {
         },
         parent_id: {
             type: DataTypes.INTEGER,
+            references: {
+                model: 'Complaints',
+                key: 'id'
+            },
             foreignKey: true
         },
         author: {
             type: DataTypes.INTEGER,
+            references: {
+                model: 'Users',
+                key: 'id'
+            },
             foreignKey: true
         },
         text: DataTypes.STRING(1000),
@@ -23,6 +31,9 @@ module.exports = (sequelize, DataTypes) => {
             defaultValue: DataTypes.NOW
         }
     })
-
+    Comment.associate = function (models) {
+        Comment.belongsTo(models.Complaint, {foreignKey: parent_id});
+        Comment.belongsTo(models.User, {foreignKey: author});
+    };
     return Comment;
 }
