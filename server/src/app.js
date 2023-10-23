@@ -8,7 +8,6 @@ const build = () => {
     //require('./routes')(app);
 
     app.register(require('./routes/api'), { prefix: '/api/v1' });
-
     app.register(cors, {
         origin: true
     });

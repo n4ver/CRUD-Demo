@@ -18,6 +18,12 @@ export default [
     component: () => import('../views/Complaints.vue')
   },
   {
+    name: 'Submit',
+    path: '/submit',
+    meta: { requireAuth: true },
+    component: () => import('../views/Submit.vue')
+  },
+  {
     name: 'ComplaintsSlug',
     path: '/complaints/:id',
     meta: { requireAuth: false },
